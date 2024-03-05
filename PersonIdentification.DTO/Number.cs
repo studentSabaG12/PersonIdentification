@@ -12,8 +12,7 @@ namespace PersonIdentification.DTO
 
         public int Id { get; set; }
         public NumberType numberType { get; set; }
-        [MinLength(4, ErrorMessage = "Number must be at least 4 characters long.")]
-        [MaxLength(50, ErrorMessage = "Number cannot exceed 50 characters.")]
+        public Person Person { get; set; }
         public string TextNumber { get; set; }
         public DateTime CreateDate { get; set; }
         public bool IsDelete { get; set; }

@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace PersonIdentification.DTO
 {
-    internal class RefferencedPersons
+    public class RefferencedPersons
     {
         public int Id { get; set; }
         public int PersonId {  get; set; }

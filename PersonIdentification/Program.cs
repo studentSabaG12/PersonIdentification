@@ -1,3 +1,6 @@
+using Microsoft.EntityFrameworkCore;
+using PersonIdentification.Repository;
+
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
@@ -23,3 +26,9 @@ app.UseAuthorization();
 app.MapRazorPages();
 
 app.Run();
+string connectionString =
+    builder.Configuration.GetConnectionString("DefaultConnection") ??
+    throw new ArgumentException(nameof(builder));
+
+builder.Services.AddDbContext<PersonIdentificationDbContext>(options => options.UseSqlServer(connectionString));
+
