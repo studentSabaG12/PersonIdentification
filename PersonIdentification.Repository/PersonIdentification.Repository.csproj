@@ -16,6 +16,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\PersonIdentification.DTO\PersonIdentification.DTO.csproj" />
+    <ProjectReference Include="..\PersonIdentification.Service\PersonIdentification.Service.csproj" />
   </ItemGroup>
 
 </Project>
