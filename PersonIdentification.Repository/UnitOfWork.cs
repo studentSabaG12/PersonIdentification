@@ -4,9 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace PersonIdentification.Service.Interfaces.Repository
+namespace PersonIdentification.Repository
 {
-    internal interface ICity
+    internal class UnitOfWork
     {
     }
 }

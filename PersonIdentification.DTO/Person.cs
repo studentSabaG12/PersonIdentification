@@ -13,8 +13,8 @@ public class Person
     public DateTime BirthDate {  get; set; }
     public bool IsDelete { get; set; }
     public ICollection<Number> Numbers { get; set; }
-    public ICollection<RelatedPerson>? FromRelatedPeople { get; set; }
-    public ICollection<RelatedPerson>? ToRelatedPeople { get; set; }
+    public ICollection<Relation>? FromRelations { get; set; }
+    public ICollection<Relation>? ToRelations { get; set; }
 }
 public enum PersonGender : byte
 {

@@ -16,7 +16,7 @@ internal abstract class RepositoryBase<T> : IRepositoryBase<T> where T : class
     }
 
     public  T Get(params object[] id) =>
-        _dbSet.Find(id) ?? throw new KeyNotFoundException($"Record with this {id} was not found");
+        _dbSet.Find(id) ?? throw new KeyNotFoundException($"Record with key {id}  not found");
 
     public IQueryable<T> Set(Expression<Func<T, bool>> predicate) =>
         _dbSet.Where(predicate);
