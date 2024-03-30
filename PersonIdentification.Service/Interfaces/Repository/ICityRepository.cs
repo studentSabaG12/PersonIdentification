@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace PersonIdentification.Service.Interfaces.Repository
 {
-    internal interface ICity:IRepositoryBase<City>
+    public interface ICity:IRepositoryBase<City>
     {
     }
 }
