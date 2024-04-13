@@ -2,7 +2,7 @@
 
 namespace PersonIdentification.Service.Interfaces.Repository
 {
-    public interface ICityRepository:IRepositoryBase<City>
+    public interface IRelationRepository:IRepositoryBase<Relation>
     {
     }
 }
