@@ -26,7 +26,7 @@ namespace PersonIdentification.Service.Service
             }
         }
 
-        public Task<IQueryable<Number>> GetNumbers(int numeberId)
+        public Task<IQueryable<Number>> GetNumbers()
         {
             var numbers = _unitOfWork.NumberRepository.Set() ?? throw new InvalidDataException("Numbers could not be loaded");
             if (numbers != null)
@@ -57,7 +57,7 @@ namespace PersonIdentification.Service.Service
         {
            Number number = _unitOfWork.NumberRepository.Get(numberId) ?? throw new InvalidDataException("NumberId Could not be found");
             number.IsDelete = true;
-            _unitOfWork.NumberRepository.Update(numberId);
+            _unitOfWork.NumberRepository.Update(number);
             _unitOfWork.SaveChanges();
         }
     }
