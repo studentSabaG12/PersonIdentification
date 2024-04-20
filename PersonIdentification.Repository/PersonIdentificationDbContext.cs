@@ -11,9 +11,6 @@ namespace PersonIdentification.Repository
         }
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
-            base.OnModelCreating(modelBuilder);
-
-
 
             modelBuilder.Entity<Person>()
                                 .Property(p => p.Id)
@@ -37,19 +34,15 @@ namespace PersonIdentification.Repository
                                 .IsRequired(true);
             modelBuilder.Entity<Person>()
                                 .Property(p => p.Gender)
-                                .HasColumnType("nvarchar(10)")
+                                .HasColumnType("tinyint")
                                 .IsRequired(true);
-            //modelBuilder.Entity<Person>()
-            //                    .HasMany(p => p.City)
-            //                    .WithOney(p => p.Persons)
-            //                    .HasForeignKey(p => p.ID);
             modelBuilder.Entity<Person>()
                                 .Property(p => p.CreateDate)
                                 .HasColumnType("date")
                                 .HasDefaultValueSql("GetDate()")
                                 .IsRequired(true);
             modelBuilder.Entity<Person>()
-                                .Property(r => r.IsDelete)
+                                .Property(pc => pc.IsDelete)
                                 .HasColumnType("bit")
                                 .HasDefaultValueSql("(0)")
                                 .IsRequired(true);
@@ -75,18 +68,18 @@ namespace PersonIdentification.Repository
 
 
             modelBuilder.Entity<Relation>()
-                                            .Property (p => p.ToPersonId)
-                                            .HasColumnType("nvarchar(35)")
+                                            .Property(r => r.Type)
+                                            .HasColumnType("tinyint")
                                             .IsRequired(true);
 
             modelBuilder.Entity<Relation>()
-                                            .Property(r => r.CreateDate)
+                                            .Property(pc => pc.CreateDate)
                                             .HasColumnType("date")
                                             .HasDefaultValueSql("GetDate()")
                                             .IsRequired(true);
 
             modelBuilder.Entity<Relation>()
-                                            .Property(r => r.IsDelete)
+                                            .Property(pc => pc.IsDelete)
                                             .HasColumnType("bit")
                                             .HasDefaultValueSql("(0)")
                                             .IsRequired(true);
@@ -115,7 +108,7 @@ namespace PersonIdentification.Repository
                                 .HasDefaultValueSql("GetDate()")
                                 .IsRequired(true);
             modelBuilder.Entity<City>()
-                                .Property(r => r.IsDelete)
+                                .Property(pc => pc.IsDelete)
                                 .HasColumnType("bit")
                                 .HasDefaultValueSql("(0)")
                                 .IsRequired(true);
@@ -125,16 +118,16 @@ namespace PersonIdentification.Repository
                                 .HasColumnType("int")
                                 .IsRequired(true);
             modelBuilder.Entity<Number>()
-                                .Property(n => n.TextNumber)
+                                .Property(ci => ci.TextNumber)
                                 .HasColumnType("varchar(15)")
                                 .IsRequired(true);
             modelBuilder.Entity<Number>()
-                                .Property (n => n.Id)
-                                .HasColumnType("nvarchar(30)")
+                                .Property(n => n.Type)
+                                .HasColumnType("tinyint")
                                 .IsRequired(true);
             modelBuilder.Entity<Number>()
-                                .HasOne(n => n.Person)
-                                .WithMany(n => n.Numbers)
+                                .HasOne(n =>n.Person)
+                                .WithMany(n =>n.Numbers)
                                 .IsRequired(true);
             modelBuilder.Entity<Number>()
                                 .Property(p => p.CreateDate)
@@ -142,11 +135,10 @@ namespace PersonIdentification.Repository
                                 .HasDefaultValueSql("GetDate()")
                                 .IsRequired(true);
             modelBuilder.Entity<Number>()
-                                .Property(pc => pc.IsDelete)
+                                .Property(r => r.IsDelete)
                                 .HasColumnType("bit")
                                 .HasDefaultValueSql("(0)")
                                 .IsRequired(true);
-
         }
         public DbSet<City> Cities { get; set; }
         public DbSet<Number> Numbers { get; set; }
